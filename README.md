@@ -1,9 +1,15 @@
-# Desafico Senior Challenge
 
+<h1 align="center"> Desafico Senior Challenge </h1>
 O objetivo desse artigo é apresentar soluções para o desafio da Senior Labs Challenge.
 Nesse desafio foi proposto criar um artigo detalhando qual a metodologia aplicada e desenvolver soluções através de ferramentas de software para extrair dados estatísticos e relatórios gráficos da base de dados disponibilizada.
 
+# Índice
 
+* [Introdução](#introdução)
+* [Problema](#problema)
+* [Objetivo](#objetivo)
+* [Solução Proposta](#objetivo)
+  
  
 # Introdução
 Nas últimas décadas, o e-mail se tornou uma das principais formas comunicação no meio coorporativo, é cada vez mais comum que as pessoas sejam inundadas por uma grande quantidade de mensagens.
@@ -18,7 +24,7 @@ Extrair informações estáticas da base de dados disponibilizada, através de q
 # Objetivo
 Realizar a criação de um artigo evidenciando os dados extraídos, consolidados em relatórios e apresentar metodologia aplicada para obter os resultados esperados.
 
-#Solução Proposta
+# Solução  
 O software utilizado para extrair as informações solicitadas é o Power BI da Microsoft,
 Através dele foi possível importar a base de dados e gerar os relatórios solicitados por meio dos recursos e tecnologia da ferramenta.
 
