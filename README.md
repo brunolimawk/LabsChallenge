@@ -28,3 +28,5 @@ Realizar a criação de um artigo evidenciando os dados extraídos, consolidados
 O software utilizado para extrair as informações solicitadas é o Power BI da Microsoft,
 Através dele foi possível importar a base de dados e gerar os relatórios solicitados por meio dos recursos e tecnologia da ferramenta.
 
+
+Acesso aos Dashboards: https://app.powerbi.com/groups/me/reports/56c771c2-0b2a-4dfa-84f4-e55ad8f0305a/ReportSection?ctid=62c7b02d-a95c-498b-9a7f-6e00acab728d&bookmarkGuid=bddd9e4d-789f-4c96-b7fd-ef0633f9702a
