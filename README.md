@@ -1,5 +1,16 @@
 # Desafico Senior Challenge
 
+O objetivo desse artigo é apresentar soluções para o desafio da Senior Labs Challenge.
+Nesse desafio foi proposto criar um artigo detalhando qual a metodologia aplicada e desenvolver soluções através de ferramentas de software para extrair dados estatísticos e relatórios gráficos da base de dados disponibilizada.
+
+
+# Índice
+
+- Introdução
+- Problema
+- Objetivo
+- Solução Proposta
+
 Prezados, tudo bem?
 
 Disponível neste repositório o artigo em documento pdf, com as questões detalhadas da primeira e segunda etapa, arquivo do Power B.I e link para acesso aos dashboards online.
