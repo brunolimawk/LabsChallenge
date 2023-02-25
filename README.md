@@ -1,7 +1,7 @@
 
-<h1 align="center"> Desafico Senior Challenge </h1>
-O objetivo desse artigo é apresentar soluções para o desafio da Senior Labs Challenge.
-Nesse desafio foi proposto criar um artigo detalhando qual a metodologia aplicada e desenvolver soluções através de ferramentas de software para extrair dados estatísticos e relatórios gráficos da base de dados disponibilizada.
+<h1 align="center"> Machine Learning com Python </h1>
+A solução de machine learning apresentada é um modelo de classificação que tem como objetivo identificar se um e-mail é considerado spam ou não. O modelo é treinado utilizando um conjunto de dados que possui informações sobre os e-mails, incluindo a presença de palavras específicas, o tamanho do e-mail em termos de número de palavras, a frequência de ocorrência de determinadas palavras, entre outras.
+
 
 # Índice
 
@@ -30,4 +30,73 @@ Classificação de e-mails como spam ou não spam.
 Criar algoritimo através da programação em Python utilizando machine learning que seja capaz de classificar e-mails como spam ou não spam de forma automatizada e eficiente.  
 
 # Solução  
+
+```python
+import pandas as pd
+
+#Url contendo os dados que serão utilizamos para criação do modelo
+urlDbGit = "https://raw.githubusercontent.com/brunolimawk/LabsChallenge/main/DataBase.csv"
  
+#Busca os dados da tabela no formato CSV e cria um DataFrame
+df = pd.read_csv(urlDbGit, delimiter=";")
+
+#Criar colunas contendo o mínimo, a média, o máximo, o desvio padrão, a mediana e a variação de palavras da coluna Full_Text
+
+df['Min_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).min()
+df['Media_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).mean()
+df['Max_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).max()
+df['Desvio_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).std()
+df['Mediana_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).median()
+#df['Variacao_palavras'] = df['Full_Text'].str.split().apply(lambda x: max(x) - min(x)) 
+
+#Definir a coluna "IsSpam" como variável alvo e transformá-la em binarios
+df['IsSpam'] = df['IsSpam'].apply(lambda x: 1 if x == 'Yes' else 0)
+
+
+#Separar o conjunto de dados em treinamento e teste
+df['IsSpam'] = df['IsSpam'].apply(lambda x: 1 if x == 'Yes' else 0)
+
+#Divide o modelo e prepara o treinamento
+from sklearn.model_selection import train_test_split
+
+treinamento, teste = train_test_split(df, test_size=0.2, random_state=42)
+
+
+#Importar o CountVectorizer e utiliza-lo para transformar a coluna "Full_Text" em uma matriz
+from sklearn.feature_extraction.text import CountVectorizer
+
+count_vectorizer = CountVectorizer()
+X_treinamento = count_vectorizer.fit_transform(treinamento['Full_Text'])
+X_teste = count_vectorizer.transform(teste['Full_Text'])
+y_treinamento = treinamento['IsSpam']
+y_teste = teste['IsSpam']
+
+
+#Adicionar dados de treinamento e teste
+import numpy as np
+
+X_treinamento = np.hstack((X_treinamento.toarray(), treinamento[['Min_palavras', 'Media_palavras', 'Max_palavras', 'Desvio_palavras', 'Mediana_palavras']].values))
+X_teste = np.hstack((X_teste.toarray(), teste[['Min_palavras', 'Media_palavras', 'Max_palavras', 'Desvio_palavras', 'Mediana_palavras']].values))
+
+#Treinar um modelo de classificação, utilizando Naive Bayes
+from sklearn.naive_bayes import MultinomialNB
+
+modelo = MultinomialNB()
+modelo.fit(X_treinamento, y_treinamento)
+
+#Avaliar o desempenho do modelo
+from sklearn.metrics import accuracy_score 
+
+#Fazer as previsões com o modelo treinado
+y_pred = modelo.predict(X_teste)
+
+
+# Calcular acurácia
+acuracia = accuracy_score(y_teste, y_pred)
+
+ 
+print("Acurácia:", acuracia)
+```
+
+
+
