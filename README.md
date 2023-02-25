@@ -9,6 +9,7 @@ Nesse desafio foi proposto criar um artigo detalhando qual a metodologia aplicad
 * [Problema](#problema)
 * [Objetivo](#objetivo)
 * [Solução Proposta](#objetivo)
+* [Desafio Parte #2](#objetivo)
   
  
 # Introdução
@@ -30,3 +31,9 @@ Através dele foi possível importar a base de dados e gerar os relatórios soli
 
 
 Acesso aos Dashboards: https://app.powerbi.com/groups/me/reports/56c771c2-0b2a-4dfa-84f4-e55ad8f0305a/ReportSection?ctid=62c7b02d-a95c-498b-9a7f-6e00acab728d&bookmarkGuid=bddd9e4d-789f-4c96-b7fd-ef0633f9702a
+
+# Desafio Parte #2
+
+A segunda etapa consiste em aplicar um método capaz de classificar automaticamente as mensagens como “comum” e “spam”. Como você considera os resultados encontrados? Justifique.
+
+https://github.com/brunolimawk/IA_Python
