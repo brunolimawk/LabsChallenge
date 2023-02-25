@@ -29,7 +29,7 @@ Classificação de e-mails como spam ou não spam.
 
 Criar algoritimo através da programação em Python utilizando machine learning que seja capaz de classificar e-mails como spam ou não spam de forma automatizada e eficiente.  
 
-# Solução  
+# Solução Implementada
 
 ```python
 import pandas as pd
