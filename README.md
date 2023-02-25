@@ -1,7 +1,7 @@
 
-<h1 align="center"> Machine Learning com Python </h1>
-A solução de machine learning apresentada é um modelo de classificação que tem como objetivo identificar se um e-mail é considerado spam ou não. O modelo é treinado utilizando um conjunto de dados que possui informações sobre os e-mails, incluindo a presença de palavras específicas, o tamanho do e-mail em termos de número de palavras, a frequência de ocorrência de determinadas palavras, entre outras.
-
+<h1 align="center"> Desafico Senior Challenge </h1>
+O objetivo desse artigo é apresentar soluções para o desafio da Senior Labs Challenge.
+Nesse desafio foi proposto criar um artigo detalhando qual a metodologia aplicada e desenvolver soluções através de ferramentas de software para extrair dados estatísticos e relatórios gráficos da base de dados disponibilizada.
 
 # Índice
 
@@ -12,91 +12,21 @@ A solução de machine learning apresentada é um modelo de classificação que 
   
  
 # Introdução
-
-A solução implementada de machine learning com Python consiste em um modelo capaz de classificar e-mails como spam ou não spam. Para isso, foram utilizados diversos algoritmos de classificação, como Regressão Logística, Árvores de Decisão e Naive Bayes, que foram treinados em um conjunto de dados de e-mails previamente rotulados.
-O conjunto de dados é pré-processado para transformar as informações em um formato adequado para a alimentação do modelo de aprendizado de máquina. Em seguida, um modelo de classificação é escolhido e treinado usando os dados de treinamento.
-Após o treinamento, o modelo é avaliado usando um conjunto de dados de teste separado. A precisão do modelo é calculada a partir das previsões feitas pelo modelo para o conjunto de teste. Uma vez que o modelo foi avaliado e ajustado para obter o melhor desempenho possível, ele está pronto para ser utilizado em novos dados.
-No exemplo apresentado, foram utilizados vários algoritmos de classificação, como Regressão Logística, Árvores de Decisão, e Naive Bayes. Também foram utilizadas técnicas de pré-processamento de dados, como vetorização de texto, que é uma técnica comum para processar dados de texto para alimentação de modelos de aprendizado de máquina.
-Em geral, a solução de machine learning é um processo iterativo que envolve a escolha do conjunto de dados, a pré-processamento dos dados, a escolha e treinamento do modelo, e a avaliação do modelo. A escolha de um bom conjunto de dados e a seleção do modelo apropriado são essenciais para o sucesso da solução de machine learning.
-
+Nas últimas décadas, o e-mail se tornou uma das principais formas comunicação no meio coorporativo, é cada vez mais comum que as pessoas sejam inundadas por uma grande quantidade de mensagens.
+Infelizmente, muitas dessas mensagens são spams, são enviadas com o objetivo de promover produtos ou serviços de maneira invasiva e não solicitada.
+Além de ser desagradável o recebimento dessas mensagens, os spams também podem representar uma ameaça à segurança dos usuários, já que muitos desses e-mails podem conter links maliciosos que podem infectar o computador com vírus ou roubar informações pessoais.
+No desafio proposto, foi disponibilizado uma base de dados no formato CSV contém vários exemplos de mensagens comuns e de spams.
+Utilizando essas informações, o objetivo é extrair dados estatísticos, relatório gráficos e por fim propor um modelo que seja possível classificar de forma automática se o e-mail é uma mensagem comum ou spam.
 
 # Problema
-
-Classificação de e-mails como spam ou não spam. 
-
+Extrair informações estáticas da base de dados disponibilizada, através de qualquer software ou linguagem de programação.
 
 # Objetivo
+Realizar a criação de um artigo evidenciando os dados extraídos, consolidados em relatórios e apresentar metodologia aplicada para obter os resultados esperados.
 
-Criar algoritimo através da programação em Python utilizando machine learning que seja capaz de classificar e-mails como spam ou não spam de forma automatizada e eficiente.  
-
-# Solução Implementada
-
-```python
-import pandas as pd
-
-#Url contendo os dados que serão utilizamos para criação do modelo
-urlDbGit = "https://raw.githubusercontent.com/brunolimawk/LabsChallenge/main/DataBase.csv"
- 
-#Busca os dados da tabela no formato CSV e cria um DataFrame
-df = pd.read_csv(urlDbGit, delimiter=";")
-
-#Criar colunas contendo o mínimo, a média, o máximo, o desvio padrão, a mediana e a variação de palavras da coluna Full_Text
-
-df['Min_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).min()
-df['Media_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).mean()
-df['Max_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).max()
-df['Desvio_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).std()
-df['Mediana_palavras'] = df['Full_Text'].str.split().apply(lambda x: len(x)).median()
-#df['Variacao_palavras'] = df['Full_Text'].str.split().apply(lambda x: max(x) - min(x)) 
-
-#Definir a coluna "IsSpam" como variável alvo e transformá-la em binarios
-df['IsSpam'] = df['IsSpam'].apply(lambda x: 1 if x == 'Yes' else 0)
+# Solução  
+O software utilizado para extrair as informações solicitadas é o Power BI da Microsoft,
+Através dele foi possível importar a base de dados e gerar os relatórios solicitados por meio dos recursos e tecnologia da ferramenta.
 
 
-#Separar o conjunto de dados em treinamento e teste
-df['IsSpam'] = df['IsSpam'].apply(lambda x: 1 if x == 'Yes' else 0)
-
-#Divide o modelo e prepara o treinamento
-from sklearn.model_selection import train_test_split
-
-treinamento, teste = train_test_split(df, test_size=0.2, random_state=42)
-
-
-#Importar o CountVectorizer e utiliza-lo para transformar a coluna "Full_Text" em uma matriz
-from sklearn.feature_extraction.text import CountVectorizer
-
-count_vectorizer = CountVectorizer()
-X_treinamento = count_vectorizer.fit_transform(treinamento['Full_Text'])
-X_teste = count_vectorizer.transform(teste['Full_Text'])
-y_treinamento = treinamento['IsSpam']
-y_teste = teste['IsSpam']
-
-
-#Adicionar dados de treinamento e teste
-import numpy as np
-
-X_treinamento = np.hstack((X_treinamento.toarray(), treinamento[['Min_palavras', 'Media_palavras', 'Max_palavras', 'Desvio_palavras', 'Mediana_palavras']].values))
-X_teste = np.hstack((X_teste.toarray(), teste[['Min_palavras', 'Media_palavras', 'Max_palavras', 'Desvio_palavras', 'Mediana_palavras']].values))
-
-#Treinar um modelo de classificação, utilizando Naive Bayes
-from sklearn.naive_bayes import MultinomialNB
-
-modelo = MultinomialNB()
-modelo.fit(X_treinamento, y_treinamento)
-
-#Avaliar o desempenho do modelo
-from sklearn.metrics import accuracy_score 
-
-#Fazer as previsões com o modelo treinado
-y_pred = modelo.predict(X_teste)
-
-
-# Calcular acurácia
-acuracia = accuracy_score(y_teste, y_pred)
-
- 
-print("Acurácia:", acuracia)
-```
-
-
-
+Acesso aos Dashboards: https://app.powerbi.com/groups/me/reports/56c771c2-0b2a-4dfa-84f4-e55ad8f0305a/ReportSection?ctid=62c7b02d-a95c-498b-9a7f-6e00acab728d&bookmarkGuid=bddd9e4d-789f-4c96-b7fd-ef0633f9702a
