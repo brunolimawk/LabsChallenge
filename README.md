@@ -12,21 +12,22 @@ Nesse desafio foi proposto criar um artigo detalhando qual a metodologia aplicad
   
  
 # Introdução
-Nas últimas décadas, o e-mail se tornou uma das principais formas comunicação no meio coorporativo, é cada vez mais comum que as pessoas sejam inundadas por uma grande quantidade de mensagens.
-Infelizmente, muitas dessas mensagens são spams, são enviadas com o objetivo de promover produtos ou serviços de maneira invasiva e não solicitada.
-Além de ser desagradável o recebimento dessas mensagens, os spams também podem representar uma ameaça à segurança dos usuários, já que muitos desses e-mails podem conter links maliciosos que podem infectar o computador com vírus ou roubar informações pessoais.
-No desafio proposto, foi disponibilizado uma base de dados no formato CSV contém vários exemplos de mensagens comuns e de spams.
-Utilizando essas informações, o objetivo é extrair dados estatísticos, relatório gráficos e por fim propor um modelo que seja possível classificar de forma automática se o e-mail é uma mensagem comum ou spam.
+
+A solução implementada de machine learning com Python consiste em um modelo capaz de classificar e-mails como spam ou não spam. Para isso, foram utilizados diversos algoritmos de classificação, como Regressão Logística, Árvores de Decisão e Naive Bayes, que foram treinados em um conjunto de dados de e-mails previamente rotulados.
+O conjunto de dados é pré-processado para transformar as informações em um formato adequado para a alimentação do modelo de aprendizado de máquina. Em seguida, um modelo de classificação é escolhido e treinado usando os dados de treinamento.
+Após o treinamento, o modelo é avaliado usando um conjunto de dados de teste separado. A precisão do modelo é calculada a partir das previsões feitas pelo modelo para o conjunto de teste. Uma vez que o modelo foi avaliado e ajustado para obter o melhor desempenho possível, ele está pronto para ser utilizado em novos dados.
+No exemplo apresentado, foram utilizados vários algoritmos de classificação, como Regressão Logística, Árvores de Decisão, e Naive Bayes. Também foram utilizadas técnicas de pré-processamento de dados, como vetorização de texto, que é uma técnica comum para processar dados de texto para alimentação de modelos de aprendizado de máquina.
+Em geral, a solução de machine learning é um processo iterativo que envolve a escolha do conjunto de dados, a pré-processamento dos dados, a escolha e treinamento do modelo, e a avaliação do modelo. A escolha de um bom conjunto de dados e a seleção do modelo apropriado são essenciais para o sucesso da solução de machine learning.
+
 
 # Problema
-Extrair informações estáticas da base de dados disponibilizada, através de qualquer software ou linguagem de programação.
+
+Classificação de e-mails como spam ou não spam. 
+
 
 # Objetivo
-Realizar a criação de um artigo evidenciando os dados extraídos, consolidados em relatórios e apresentar metodologia aplicada para obter os resultados esperados.
+
+Criar algoritimo através da programação em Python utilizando machine learning que seja capaz de classificar e-mails como spam ou não spam de forma automatizada e eficiente.  
 
 # Solução  
-O software utilizado para extrair as informações solicitadas é o Power BI da Microsoft,
-Através dele foi possível importar a base de dados e gerar os relatórios solicitados por meio dos recursos e tecnologia da ferramenta.
-
-
-Acesso aos Dashboards: https://app.powerbi.com/groups/me/reports/56c771c2-0b2a-4dfa-84f4-e55ad8f0305a/ReportSection?ctid=62c7b02d-a95c-498b-9a7f-6e00acab728d&bookmarkGuid=bddd9e4d-789f-4c96-b7fd-ef0633f9702a
+ 
